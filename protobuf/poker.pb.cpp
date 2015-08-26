@@ -128,7 +128,7 @@ void protobuf_AssignDesc_poker_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Player, _internal_metadata_),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Player, _is_default_instance_));
   GameState_descriptor_ = file->message_type(4);
-  static const int GameState_offsets_[12] = {
+  static const int GameState_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameState, players_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameState, smallblind_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameState, bigblind_),
@@ -138,9 +138,7 @@ void protobuf_AssignDesc_poker_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameState, me_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameState, whos_turn_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameState, table_id_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameState, flop_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameState, turn_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameState, river_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameState, community_cards_),
   };
   GameState_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -215,20 +213,20 @@ void protobuf_AddDesc_poker_2eproto() {
     "oto.Suite\022\031\n\004rank\030\002 \001(\0162\013.proto.Rank\"e\n\006"
     "Player\022\n\n\002id\030\001 \001(\005\022\r\n\005stack\030\002 \001(\005\022$\n\rlat"
     "est_action\030\003 \001(\0132\r.proto.Action\022\014\n\004hand\030"
-    "\005 \001(\004\022\014\n\004name\030\006 \001(\t\"\337\001\n\tGameState\022\036\n\007pla"
+    "\005 \001(\004\022\014\n\004name\030\006 \001(\t\"\332\001\n\tGameState\022\036\n\007pla"
     "yers\030\001 \003(\0132\r.proto.Player\022\022\n\nsmallblind\030"
     "\002 \001(\005\022\020\n\010bigblind\030\003 \001(\005\022\023\n\013minimum_bet\030\004"
     " \001(\005\022\013\n\003pot\030\005 \001(\005\022\016\n\006button\030\006 \001(\005\022\n\n\002me\030"
     "\007 \001(\005\022\021\n\twhos_turn\030\010 \001(\005\022\020\n\010table_id\030\t \001"
-    "(\005\022\014\n\004flop\030\n \001(\004\022\014\n\004turn\030\013 \001(\004\022\r\n\005river\030"
-    "\014 \001(\004*<\n\013MessageType\022\n\n\006ACTION\020\000\022\026\n\022REQU"
-    "EST_GAME_STATE\020\001\022\t\n\005LOGIN\020\002*\234\001\n\004Rank\022\014\n\010"
-    "BACKSIDE\020\000\022\007\n\003ONE\020\001\022\007\n\003TWO\020\002\022\t\n\005THREE\020\003\022"
-    "\010\n\004FOUR\020\004\022\010\n\004FIVE\020\005\022\007\n\003SIX\020\006\022\t\n\005SEVEN\020\007\022"
-    "\t\n\005EIGHT\020\010\022\010\n\004NINE\020\t\022\005\n\001T\020\n\022\005\n\001J\020\013\022\005\n\001Q\020"
-    "\014\022\005\n\001K\020\r\022\005\n\001A\020\016\022\t\n\005JOKER\020\017*8\n\005Suite\022\n\n\006S"
-    "PADES\020\000\022\n\n\006HEARTS\020\001\022\014\n\010DIAMONDS\020\002\022\t\n\005CLU"
-    "BS\020\003b\006proto3", 1012);
+    "(\005\022$\n\017community_cards\030\n \003(\0132\013.proto.Card"
+    "*<\n\013MessageType\022\n\n\006ACTION\020\000\022\026\n\022REQUEST_G"
+    "AME_STATE\020\001\022\t\n\005LOGIN\020\002*\234\001\n\004Rank\022\014\n\010BACKS"
+    "IDE\020\000\022\007\n\003ONE\020\001\022\007\n\003TWO\020\002\022\t\n\005THREE\020\003\022\010\n\004FO"
+    "UR\020\004\022\010\n\004FIVE\020\005\022\007\n\003SIX\020\006\022\t\n\005SEVEN\020\007\022\t\n\005EI"
+    "GHT\020\010\022\010\n\004NINE\020\t\022\005\n\001T\020\n\022\005\n\001J\020\013\022\005\n\001Q\020\014\022\005\n\001"
+    "K\020\r\022\005\n\001A\020\016\022\t\n\005JOKER\020\017*8\n\005Suite\022\n\n\006SPADES"
+    "\020\000\022\n\n\006HEARTS\020\001\022\014\n\010DIAMONDS\020\002\022\t\n\005CLUBS\020\003b"
+    "\006proto3", 1007);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "poker.proto", &protobuf_RegisterTypes);
   PokerMessage::default_instance_ = new PokerMessage();
@@ -2027,9 +2025,7 @@ const int GameState::kButtonFieldNumber;
 const int GameState::kMeFieldNumber;
 const int GameState::kWhosTurnFieldNumber;
 const int GameState::kTableIdFieldNumber;
-const int GameState::kFlopFieldNumber;
-const int GameState::kTurnFieldNumber;
-const int GameState::kRiverFieldNumber;
+const int GameState::kCommunityCardsFieldNumber;
 #endif  // !_MSC_VER
 
 GameState::GameState()
@@ -2061,9 +2057,6 @@ void GameState::SharedCtor() {
   me_ = 0;
   whos_turn_ = 0;
   table_id_ = 0;
-  flop_ = GOOGLE_ULONGLONG(0);
-  turn_ = GOOGLE_ULONGLONG(0);
-  river_ = GOOGLE_ULONGLONG(0);
 }
 
 GameState::~GameState() {
@@ -2111,12 +2104,13 @@ void GameState::Clear() {
 } while (0)
 
   ZR_(smallblind_, whos_turn_);
-  ZR_(table_id_, river_);
+  table_id_ = 0;
 
 #undef ZR_HELPER_
 #undef ZR_
 
   players_.Clear();
+  community_cards_.Clear();
 }
 
 bool GameState::MergePartialFromCodedStream(
@@ -2261,51 +2255,23 @@ bool GameState::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(80)) goto parse_flop;
+        if (input->ExpectTag(82)) goto parse_community_cards;
         break;
       }
 
-      // optional uint64 flop = 10;
+      // repeated .proto.Card community_cards = 10;
       case 10: {
-        if (tag == 80) {
-         parse_flop:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &flop_)));
-
+        if (tag == 82) {
+         parse_community_cards:
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_community_cards:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_community_cards()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(88)) goto parse_turn;
-        break;
-      }
-
-      // optional uint64 turn = 11;
-      case 11: {
-        if (tag == 88) {
-         parse_turn:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &turn_)));
-
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(96)) goto parse_river;
-        break;
-      }
-
-      // optional uint64 river = 12;
-      case 12: {
-        if (tag == 96) {
-         parse_river:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &river_)));
-
-        } else {
-          goto handle_unusual;
-        }
+        if (input->ExpectTag(82)) goto parse_loop_community_cards;
+        input->UnsafeDecrementRecursionDepth();
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -2380,19 +2346,10 @@ void GameState::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->table_id(), output);
   }
 
-  // optional uint64 flop = 10;
-  if (this->flop() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(10, this->flop(), output);
-  }
-
-  // optional uint64 turn = 11;
-  if (this->turn() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(11, this->turn(), output);
-  }
-
-  // optional uint64 river = 12;
-  if (this->river() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(12, this->river(), output);
+  // repeated .proto.Card community_cards = 10;
+  for (unsigned int i = 0, n = this->community_cards_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      10, this->community_cards(i), output);
   }
 
   // @@protoc_insertion_point(serialize_end:proto.GameState)
@@ -2448,19 +2405,11 @@ void GameState::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->table_id(), target);
   }
 
-  // optional uint64 flop = 10;
-  if (this->flop() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(10, this->flop(), target);
-  }
-
-  // optional uint64 turn = 11;
-  if (this->turn() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(11, this->turn(), target);
-  }
-
-  // optional uint64 river = 12;
-  if (this->river() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(12, this->river(), target);
+  // repeated .proto.Card community_cards = 10;
+  for (unsigned int i = 0, n = this->community_cards_size(); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        10, this->community_cards(i), target);
   }
 
   // @@protoc_insertion_point(serialize_to_array_end:proto.GameState)
@@ -2526,33 +2475,20 @@ int GameState::ByteSize() const {
         this->table_id());
   }
 
-  // optional uint64 flop = 10;
-  if (this->flop() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->flop());
-  }
-
-  // optional uint64 turn = 11;
-  if (this->turn() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->turn());
-  }
-
-  // optional uint64 river = 12;
-  if (this->river() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->river());
-  }
-
   // repeated .proto.Player players = 1;
   total_size += 1 * this->players_size();
   for (int i = 0; i < this->players_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         this->players(i));
+  }
+
+  // repeated .proto.Card community_cards = 10;
+  total_size += 1 * this->community_cards_size();
+  for (int i = 0; i < this->community_cards_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->community_cards(i));
   }
 
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -2576,6 +2512,7 @@ void GameState::MergeFrom(const ::google::protobuf::Message& from) {
 void GameState::MergeFrom(const GameState& from) {
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   players_.MergeFrom(from.players_);
+  community_cards_.MergeFrom(from.community_cards_);
   if (from.smallblind() != 0) {
     set_smallblind(from.smallblind());
   }
@@ -2599,15 +2536,6 @@ void GameState::MergeFrom(const GameState& from) {
   }
   if (from.table_id() != 0) {
     set_table_id(from.table_id());
-  }
-  if (from.flop() != 0) {
-    set_flop(from.flop());
-  }
-  if (from.turn() != 0) {
-    set_turn(from.turn());
-  }
-  if (from.river() != 0) {
-    set_river(from.river());
   }
 }
 
@@ -2642,9 +2570,7 @@ void GameState::InternalSwap(GameState* other) {
   std::swap(me_, other->me_);
   std::swap(whos_turn_, other->whos_turn_);
   std::swap(table_id_, other->table_id_);
-  std::swap(flop_, other->flop_);
-  std::swap(turn_, other->turn_);
-  std::swap(river_, other->river_);
+  community_cards_.UnsafeArenaSwap(&other->community_cards_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
 }
@@ -2802,46 +2728,34 @@ void GameState::clear_table_id() {
   // @@protoc_insertion_point(field_set:proto.GameState.table_id)
 }
 
-// optional uint64 flop = 10;
-void GameState::clear_flop() {
-  flop_ = GOOGLE_ULONGLONG(0);
+// repeated .proto.Card community_cards = 10;
+int GameState::community_cards_size() const {
+  return community_cards_.size();
 }
- ::google::protobuf::uint64 GameState::flop() const {
-  // @@protoc_insertion_point(field_get:proto.GameState.flop)
-  return flop_;
+void GameState::clear_community_cards() {
+  community_cards_.Clear();
 }
- void GameState::set_flop(::google::protobuf::uint64 value) {
-  
-  flop_ = value;
-  // @@protoc_insertion_point(field_set:proto.GameState.flop)
+ const ::proto::Card& GameState::community_cards(int index) const {
+  // @@protoc_insertion_point(field_get:proto.GameState.community_cards)
+  return community_cards_.Get(index);
 }
-
-// optional uint64 turn = 11;
-void GameState::clear_turn() {
-  turn_ = GOOGLE_ULONGLONG(0);
+ ::proto::Card* GameState::mutable_community_cards(int index) {
+  // @@protoc_insertion_point(field_mutable:proto.GameState.community_cards)
+  return community_cards_.Mutable(index);
 }
- ::google::protobuf::uint64 GameState::turn() const {
-  // @@protoc_insertion_point(field_get:proto.GameState.turn)
-  return turn_;
+ ::proto::Card* GameState::add_community_cards() {
+  // @@protoc_insertion_point(field_add:proto.GameState.community_cards)
+  return community_cards_.Add();
 }
- void GameState::set_turn(::google::protobuf::uint64 value) {
-  
-  turn_ = value;
-  // @@protoc_insertion_point(field_set:proto.GameState.turn)
+ const ::google::protobuf::RepeatedPtrField< ::proto::Card >&
+GameState::community_cards() const {
+  // @@protoc_insertion_point(field_list:proto.GameState.community_cards)
+  return community_cards_;
 }
-
-// optional uint64 river = 12;
-void GameState::clear_river() {
-  river_ = GOOGLE_ULONGLONG(0);
-}
- ::google::protobuf::uint64 GameState::river() const {
-  // @@protoc_insertion_point(field_get:proto.GameState.river)
-  return river_;
-}
- void GameState::set_river(::google::protobuf::uint64 value) {
-  
-  river_ = value;
-  // @@protoc_insertion_point(field_set:proto.GameState.river)
+ ::google::protobuf::RepeatedPtrField< ::proto::Card >*
+GameState::mutable_community_cards() {
+  // @@protoc_insertion_point(field_mutable_list:proto.GameState.community_cards)
+  return &community_cards_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

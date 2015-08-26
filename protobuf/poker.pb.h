@@ -708,23 +708,17 @@ class GameState : public ::google::protobuf::Message {
   ::google::protobuf::int32 table_id() const;
   void set_table_id(::google::protobuf::int32 value);
 
-  // optional uint64 flop = 10;
-  void clear_flop();
-  static const int kFlopFieldNumber = 10;
-  ::google::protobuf::uint64 flop() const;
-  void set_flop(::google::protobuf::uint64 value);
-
-  // optional uint64 turn = 11;
-  void clear_turn();
-  static const int kTurnFieldNumber = 11;
-  ::google::protobuf::uint64 turn() const;
-  void set_turn(::google::protobuf::uint64 value);
-
-  // optional uint64 river = 12;
-  void clear_river();
-  static const int kRiverFieldNumber = 12;
-  ::google::protobuf::uint64 river() const;
-  void set_river(::google::protobuf::uint64 value);
+  // repeated .proto.Card community_cards = 10;
+  int community_cards_size() const;
+  void clear_community_cards();
+  static const int kCommunityCardsFieldNumber = 10;
+  const ::proto::Card& community_cards(int index) const;
+  ::proto::Card* mutable_community_cards(int index);
+  ::proto::Card* add_community_cards();
+  const ::google::protobuf::RepeatedPtrField< ::proto::Card >&
+      community_cards() const;
+  ::google::protobuf::RepeatedPtrField< ::proto::Card >*
+      mutable_community_cards();
 
   // @@protoc_insertion_point(class_scope:proto.GameState)
  private:
@@ -740,9 +734,7 @@ class GameState : public ::google::protobuf::Message {
   ::google::protobuf::int32 me_;
   ::google::protobuf::int32 whos_turn_;
   ::google::protobuf::int32 table_id_;
-  ::google::protobuf::uint64 flop_;
-  ::google::protobuf::uint64 turn_;
-  ::google::protobuf::uint64 river_;
+  ::google::protobuf::RepeatedPtrField< ::proto::Card > community_cards_;
   mutable int _cached_size_;
   friend void  protobuf_AddDesc_poker_2eproto();
   friend void protobuf_AssignDesc_poker_2eproto();
@@ -1238,46 +1230,34 @@ inline void GameState::set_table_id(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:proto.GameState.table_id)
 }
 
-// optional uint64 flop = 10;
-inline void GameState::clear_flop() {
-  flop_ = GOOGLE_ULONGLONG(0);
+// repeated .proto.Card community_cards = 10;
+inline int GameState::community_cards_size() const {
+  return community_cards_.size();
 }
-inline ::google::protobuf::uint64 GameState::flop() const {
-  // @@protoc_insertion_point(field_get:proto.GameState.flop)
-  return flop_;
+inline void GameState::clear_community_cards() {
+  community_cards_.Clear();
 }
-inline void GameState::set_flop(::google::protobuf::uint64 value) {
-  
-  flop_ = value;
-  // @@protoc_insertion_point(field_set:proto.GameState.flop)
+inline const ::proto::Card& GameState::community_cards(int index) const {
+  // @@protoc_insertion_point(field_get:proto.GameState.community_cards)
+  return community_cards_.Get(index);
 }
-
-// optional uint64 turn = 11;
-inline void GameState::clear_turn() {
-  turn_ = GOOGLE_ULONGLONG(0);
+inline ::proto::Card* GameState::mutable_community_cards(int index) {
+  // @@protoc_insertion_point(field_mutable:proto.GameState.community_cards)
+  return community_cards_.Mutable(index);
 }
-inline ::google::protobuf::uint64 GameState::turn() const {
-  // @@protoc_insertion_point(field_get:proto.GameState.turn)
-  return turn_;
+inline ::proto::Card* GameState::add_community_cards() {
+  // @@protoc_insertion_point(field_add:proto.GameState.community_cards)
+  return community_cards_.Add();
 }
-inline void GameState::set_turn(::google::protobuf::uint64 value) {
-  
-  turn_ = value;
-  // @@protoc_insertion_point(field_set:proto.GameState.turn)
+inline const ::google::protobuf::RepeatedPtrField< ::proto::Card >&
+GameState::community_cards() const {
+  // @@protoc_insertion_point(field_list:proto.GameState.community_cards)
+  return community_cards_;
 }
-
-// optional uint64 river = 12;
-inline void GameState::clear_river() {
-  river_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 GameState::river() const {
-  // @@protoc_insertion_point(field_get:proto.GameState.river)
-  return river_;
-}
-inline void GameState::set_river(::google::protobuf::uint64 value) {
-  
-  river_ = value;
-  // @@protoc_insertion_point(field_set:proto.GameState.river)
+inline ::google::protobuf::RepeatedPtrField< ::proto::Card >*
+GameState::mutable_community_cards() {
+  // @@protoc_insertion_point(field_mutable_list:proto.GameState.community_cards)
+  return &community_cards_;
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
