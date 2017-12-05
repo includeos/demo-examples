@@ -17,20 +17,47 @@
 
 #include <os>
 #include <net/inet4>
+#include <memdisk>
 #include <timers>
-#include "liu.hpp"
+#include <https>
+static http::Server* server = nullptr;
+extern http::Response_ptr handle_request(const http::Request&);
 
 void Service::start()
 {
   // Get the first IP stack
+  // It should have configuration from config.json
   auto& inet = net::Super_stack::get<net::IP4>(0);
 
   // Print some useful netstats every 30 secs
-  using namespace std::chrono;
   Timers::periodic(5s, 30s,
   [&inet] (uint32_t) {
     printf("<Service> TCP STATUS:\n%s\n", inet.tcp().status().c_str());
   });
 
-  setup_liveupdate_server(inet, 666, nullptr);
+  fs::memdisk().init_fs(
+  [] (auto err, auto&) {
+    assert(!err);
+  });
+  auto& filesys = fs::memdisk().fs();
+  // load CA certificate
+  auto ca_cert = filesys.stat("/test.der");
+  // load CA private key
+  auto ca_key  = filesys.stat("/test.key");
+  // load server private key
+  auto srv_key = filesys.stat("/server.key");
+
+  server = new http::Secure_server(
+        "blabla", ca_key, ca_cert, srv_key, inet.tcp());
+
+
+  server->on_request(
+    [] (auto request, auto response_writer) {
+      response_writer->set_response(handle_request(*request));
+      response_writer->write();
+    });
+
+  // listen on default HTTPS port
+  server->listen(443);
+  printf("*** TLS service started ***\n");
 }
