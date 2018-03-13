@@ -8,10 +8,10 @@ include($ENV{INCLUDEOS_PREFIX}/includeos/pre.service.cmake)
 project (service)
 
 # Human-readable name of your service
-set(SERVICE_NAME "IncludeOS TCP Performance")
+set(SERVICE_NAME "IncludeOS UDP Performance")
 
 # Name of your service binary
-set(BINARY       "tcp_perf")
+set(BINARY       "udp_perf")
 
 # Source files to be linked with OS library parts to form bootable image
 set(SOURCES
@@ -21,12 +21,13 @@ set(SOURCES
 if ("$ENV{PLATFORM}" STREQUAL "x86_solo5")
   set(DRIVERS
       solo5net     # Virtio networking
+      ip4_reassembly
     )
 else()
   set(DRIVERS
     virtionet
     vmxnet3
-    e1000
+    ip4_reassembly
   )
 endif()
 
