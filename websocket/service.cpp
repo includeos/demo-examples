@@ -36,9 +36,9 @@ void handle_ws(net::WebSocket_ptr ws)
   ws->write(ws->to_string());
   // Setup echo reply
   ws->on_read = [ws = ws.get()] (auto msg) {
-    printf("WS Recv: %s\n", msg->as_text().c_str());
+    printf("WS Recv: %s\n", msg->to_string().c_str());
     // Extracting the data from the message is performant
-    ws->write(msg->as_text());
+    ws->write(msg->to_string());
   };
   ws->on_close = [ws = ws.get()](auto code) {
   // Notify on close

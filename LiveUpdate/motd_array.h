@@ -1,3 +1,3 @@
 static const char motd_array[] = {
-#include "build/motd.h"
+#include "motd.h"
 , 0x0};

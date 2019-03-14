@@ -6,20 +6,17 @@ endif()
 
 set(EXAMPLES
   256_color_vga
-
   acorn
   demo_service
 #missing certs bundle..
 #  http_client
-#missing pmr (HAL)
-#  IRCd
-#  LiveUpdate
+  IRCd
+  LiveUpdate
   #missing lua
 #  lua5
 # unknown wrong libc ?
-#  mender
-# waiting for conan package
-#  microLB
+# mender moved to mender lib ?
+  microLB
   protobuf
 
   router
@@ -35,13 +32,13 @@ set(EXAMPLES
   TCP_perf
   TLS_server
   #TODO wait for hal
-  #transfer
+  transfer
   UDP_perf
   #TODO
   #userspace_demo
   vlan
   #TODO wait for hal
-  #websocket
+  websocket
 )
 
 if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
