@@ -1,11 +1,12 @@
 [requires]
-includeos/0.14.0@includeos/test
+includeos/[>=0.14.0,include_prerelease=True]@includeos/test
 protobuf/3.6.1@bincrafters/stable
 
 [build_requires]
-vmbuild/0.13.0@includeos/test
-chainloader/[>=0.13.0]@includeos/test
-diskimagebuild/0.14.0@includeos/test
+vmrunner/[>=0.14.0,include_prerelease=True]@includeos/test
+vmbuild/[>=0.14.0,include_prerelease=True]@includeos/test
+chainloader/[>=0.14.0,include_prerelease=True]@includeos/test
+diskbuilder/[>=0.14.0,include_prerelease=True]@includeos/test
 protoc_installer/3.6.1@bincrafters/stable
 
 [options]

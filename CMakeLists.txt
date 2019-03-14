@@ -6,6 +6,7 @@ endif()
 
 set(EXAMPLES
   256_color_vga
+
   acorn
   demo_service
 #missing certs bundle..
@@ -17,7 +18,8 @@ set(EXAMPLES
 #  lua5
 # unknown wrong libc ?
 #  mender
-  microLB
+# waiting for conan package
+#  microLB
   protobuf
 
   router
