@@ -17,7 +17,8 @@ set(EXAMPLES
 # unknown wrong libc ?
 # mender moved to mender lib ?
   microLB
-  protobuf
+# made optional
+#  protobuf
 
   router
   scoped_profiler
@@ -40,6 +41,9 @@ set(EXAMPLES
   #TODO wait for hal
   websocket
 )
+if (PROTOBUF)
+ list(APPEND EXAMPLES protobuf)
+endif()
 
 if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
    message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
