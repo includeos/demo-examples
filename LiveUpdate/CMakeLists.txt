@@ -41,20 +41,16 @@ SET(SRCS
   ../IRCd/autoconf.cpp
 )
 
-os_add_executable(LiveUpdate_example "IRC service"  ${SRCS})
-
-os_add_drivers(LiveUpdate_example ${DRIVERS})
-os_add_stdout(LiveUpdate_example ${STDOUT})
-
-
-add_custom_command( PRE_BUILD
+add_custom_command(
   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/motd.h
   COMMAND xxd -i < ${CMAKE_CURRENT_SOURCE_DIR}/ircd.motd > ${CMAKE_CURRENT_BINARY_DIR}/motd.h
   DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/ircd.motd
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-add_custom_target(motd DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/motd.h)
-add_dependencies(LiveUpdate_example motd)
+os_add_executable(LiveUpdate_example "IRC service"  ${SRCS} ${CMAKE_CURRENT_BINARY_DIR}/motd.h)
+
+os_add_drivers(LiveUpdate_example ${DRIVERS})
+os_add_stdout(LiveUpdate_example ${STDOUT})
 
 os_link_libraries(LiveUpdate_example ircd)
