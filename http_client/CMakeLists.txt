@@ -1,4 +1,8 @@
 cmake_minimum_required(VERSION 3.0)
+
+#Avoid cmake from test compiling to host
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+
 # IncludeOS install location
 if (NOT DEFINED INCLUDEOS_PREFIX)
   if (NOT DEFINED ENV{INCLUDEOS_PREFIX})
