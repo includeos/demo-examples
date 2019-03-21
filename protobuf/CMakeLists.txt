@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.0)
 
+#Avoid cmake from test compiling to host
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+
+
 project(protobuf_test_service C CXX)
 #check if conan is already run outside of project
 if (NOT DEFINED CONAN_DEPENDENCIES)

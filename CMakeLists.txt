@@ -12,37 +12,26 @@ set(EXAMPLES
 #  http_client
   IRCd
   LiveUpdate
-  #missing lua
-#  lua5
-# unknown wrong libc ?
 # mender moved to mender lib ?
   microLB
-# made optional
-#  protobuf
-
   router
   scoped_profiler
   snake
-
-  # TODO make a conan package instead of git-subdirectory
-  #SQlite
   starlight
   STREAM
   syslog
   tcp
   TCP_perf
   TLS_server
-  #TODO wait for hal
   transfer
   UDP_perf
   #TODO
   #userspace_demo
   vlan
-  #TODO wait for hal
   websocket
 )
 if (PROTOBUF)
- list(APPEND EXAMPLES protobuf)
+  list(APPEND EXAMPLES protobuf)
 endif()
 
 if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
