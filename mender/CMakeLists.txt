@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.0)
 
+#Avoid cmake from test compiling to host
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+
 project (mender_demo)
 if (NOT DEFINED CONAN_DEPENDENCIES)
   include(${CMAKE_CURRENT_BINARY_DIR}/conanbuildinfo.cmake OPTIONAL RESULT_VARIABLE HAS_CONAN)

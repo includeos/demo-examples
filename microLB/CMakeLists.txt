@@ -1,5 +1,12 @@
 cmake_minimum_required(VERSION 3.0)
 
+#Avoid cmake from test compiling to host
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+
+
+#service
+project (microLB)
+
 #check if conan is already run outside of project
 if (NOT DEFINED CONAN_DEPENDENCIES)
   include(${CMAKE_CURRENT_BINARY_DIR}/conanbuildinfo.cmake OPTIONAL RESULT_VARIABLE HAS_CONAN)
@@ -9,8 +16,7 @@ if (NOT DEFINED CONAN_DEPENDENCIES)
 endif()
 conan_basic_setup()
 
-#service
-project (microLB)
+
 include(os)
 
 set(SOURCES
@@ -37,4 +43,4 @@ endif()
 os_add_stdout(microlb_example default_stdout)
 #os_add_os_library(microlb liveupdate)
 #os_add_os_library(microlb microlb)
-# os_add_plugins( ... )
+os_add_plugins(microlb_example autoconf)
