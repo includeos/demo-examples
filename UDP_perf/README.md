@@ -15,7 +15,6 @@ Requires `ncat`
   cmake --build .
 ```
 
-<!-- TODO: How this servier client test works now?
 
 ### Howto run as a Server:
 
@@ -24,13 +23,19 @@ Requires `ncat`
 
 ```
 
-On other terminal run: `./send.sh`
+To create and send a file, on another terminal run: `./send.sh`
 
 ### Howto run as a Client:
-On a terminal run: `./receive.sh`
-On other terminal run: `boot --create-bridge . client`
 
--->
+To start the client on other terminal run:
+
+```
+  boot udp_service client
+```
+
+To listen on port 1338 and dump received data to `recv.txt`,
+on another terminal run: `./receive.sh`
+
 
 ### Closing the service
 
@@ -40,4 +45,4 @@ On other terminal run: `boot --create-bridge . client`
 
 ### How sampling is done
 Sampling is collected approximately every 5 seconds when the unikernel is run as a server.
-Sampling is collected approximately every second when the unikernel is run a client. The test runs for 10 seconds.
+Sampling is collected approximately every second when the unikernel is run as a client. The test runs for 10 seconds.
