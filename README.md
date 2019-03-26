@@ -9,7 +9,6 @@ Each example folder contains:
 - `CMakeLists.txt`: Build requirements
 - `config.json`: Network configurations required for the example
 - `service.cpp` : the `c++` example service
-- `conanfile.py`: the conan recipe
 - `conanfile.txt`: the library/tool dependencies the example requires
 - `vm.json`: some examples may have a `vm.json` if it requires some virtual configuration.
 

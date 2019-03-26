@@ -1,7 +1,21 @@
 # IncludeOS TCP Performance
 
+This service demonstrates TCP performance by sending and receiving data.
 
-## Howto:
+### Build and run service
+
+```
+  mkdir build
+  cd build
+  conan install .. -pr <profile-name>
+  source activate.sh
+  cmake ..
+  cmake --build .
+  boot tcp_perf_service
+  source deactivate.sh
+```
+
+### Howto:
 
 Receive data from the instance:
 ```
