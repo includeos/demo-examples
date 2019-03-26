@@ -20,7 +20,9 @@ To build and start the examples, ensure the following dependencies are installed
  - git
  - clang-6.0
 
-### Make sure you have the right conan settings
+> NOTE: If you are on MacOS and would like to try our `brew` to install IncludeOS, you can follow the instructions in our [includeos/homebrew-includeos](https://github.com/includeos/homebrew-includeos).
+
+### Making sure you have the right conan settings
 
 __Install profiles and IncludeOS remotes__
 
