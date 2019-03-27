@@ -1,12 +1,12 @@
 [requires]
-microlb/[>=0.14.0,include_prerelease=True]@includeos/test
-liveupdate/[>=0.14.0,include_prerelease=True]@includeos/test
+microlb/[>=0.14.0,include_prerelease=True]@includeos/latest
+liveupdate/[>=0.14.0,include_prerelease=True]@includeos/latest
 
 [build_requires]
-vmrunner/[>=0.14.0,include_prerelease=True]@includeos/test
-vmbuild/[>=0.14.0,include_prerelease=True]@includeos/test
-chainloader/[>=0.14.0,include_prerelease=True]@includeos/test
-diskbuilder/[>=0.14.0,include_prerelease=True]@includeos/test
+vmrunner/[>=0.14.0,include_prerelease=True]@includeos/latest
+vmbuild/[>=0.14.0,include_prerelease=True]@includeos/latest
+chainloader/[>=0.14.0,include_prerelease=True]@includeos/latest
+diskbuilder/[>=0.14.0,include_prerelease=True]@includeos/latest
 
 [generators]
 virtualenv
