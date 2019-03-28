@@ -19,7 +19,8 @@ pipeline {
     stage('Build examples') {
       steps {
         dir('build_examples') {
-          sh script: "cmake $SRC -DCONAN_PROFILE=$PROFILE_x86_64", label: "Cmake"
+          sh script: "conan install $SRC/acorn -pr $PROFILE_x86_64", label: "Trick to get environment set up"
+          sh script: ". ./activate.sh; cmake $SRC -DCONAN_PROFILE=$PROFILE_x86_64", label: "Cmake"
           sh script: "make -j $CPUS", label: "Make"
         }
       }
