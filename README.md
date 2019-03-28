@@ -3,19 +3,12 @@ IncludeOS demonstration example
 
 # Dependencies
  - conan
- - cmake 
+ - cmake
  - git
  - clang-6.0
 
 # Make sure you have the right conan settings
 Install profiles `conan config install https://github.com/includeos/conan_config.git`.
-
-Verify remotes
-```bash
-#conan remote list
-includeos-test: https://api.bintray.com/conan/includeos/test-packages [Verify SSL: True]
-bincrafters: https://api.bintray.com/conan/bincrafters/public-conan [Verify SSL: True]
-```
 
 # building and running a single example
 ```bash
@@ -30,7 +23,7 @@ boot (service_name)
 source deactivate.sh
 ```
 
-# Building all the examples 
+# Building all the examples
 Create a build folder and do
 ```bash
 export CC=clang
