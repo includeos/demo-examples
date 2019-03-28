@@ -1,16 +1,18 @@
-### 256 color VGA demo
+# 256 color VGA demo
 
-An example of enabling and using 256-color pixel graphics to draw a mandelbrot set.
+An example of enabling and using 256-color pixel graphics to draw a [Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set).
 
-To run with Qemu:
-```
-make
-./run.sh
-```
+> To run this example you need to have a GUI.
 
-Run with VirtualBox:
-```
-make
-../../etc/vboxrun.sh 256_Color_VGA.img
-```
+### Build and run service
 
+```
+  mkdir build
+  cd build
+  conan install .. -pr <profile-name>
+  source activate.sh
+  cmake ..
+  cmake --build .
+  boot 256_color_vga
+  source deactivate.sh
+```

@@ -13,15 +13,18 @@ make
 make install
 ```
 
-Build and run this service:
+
+### Build and run service
 
 ```
-cd IncludeOS/examples/scoped_profiler
-mkdir build
-cd build
-cmake ..
-make
-boot scoped_profiler_example
+  mkdir build
+  cd build
+  conan install .. -pr <profile-name>
+  source activate.sh
+  cmake ..
+  cmake --build .
+  boot scoped_profiler_example
+  source deactivate.sh
 ```
 
 Make something happen in the OS and then use wget or curl to `GET /profile` to see statistics:

@@ -1,7 +1,6 @@
-### TCP
+# Transfer Service
 
-This TCP service creates a TCP/IP socket, binds the socket to a port and listens
-for incoming connections.
+This is a TCP example service that demonstrates sending a file over a tcp connection.
 
 ### Build and run service
 
@@ -12,6 +11,6 @@ for incoming connections.
   source activate.sh
   cmake ..
   cmake --build .
-  boot tcp_example
+  boot transfer_service
   source deactivate.sh
 ```
