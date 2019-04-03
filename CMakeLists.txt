@@ -12,7 +12,6 @@ set(EXAMPLES
 #  http_client
   IRCd
   LiveUpdate
-# mender moved to mender lib ?
   microLB
   router
   scoped_profiler
