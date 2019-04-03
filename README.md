@@ -38,6 +38,12 @@ __Add the bincrafters remote__
 
 __Verify remotes__
 
+```
+  $ conan remote list
+  includeos: https://api.bintray.com/conan/includeos/includeos [Verify SSL: True]
+  bincrafters: https://api.bintray.com/conan/bincrafters/public-conan [Verify SSL: True]
+```  
+
 ### Building and running a single example
 To build and run a single example, go into one of the examples and do;
 
