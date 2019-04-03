@@ -36,5 +36,4 @@ else()
 endif()
 
 os_add_stdout(demo default_stdout)
-
-# os_add_plugins( ... )
+os_add_plugins(demo autoconf)
