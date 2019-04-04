@@ -18,9 +18,10 @@ To build and start the examples, ensure the following dependencies are installed
  - conan
  - cmake
  - git
- - clang-6.0
-
-> NOTE: If you are on MacOS and would like to try our `brew` to install IncludeOS, you can follow the instructions in our [includeos/homebrew-includeos](https://github.com/includeos/homebrew-includeos).
+ - clang or gcc
+ - python3
+ 
+> Note that, you may require some other dependencies based on the example you are trying.
 
 ### Making sure you have the right conan settings
 
@@ -43,6 +44,11 @@ __Verify remotes__
   includeos: https://api.bintray.com/conan/includeos/includeos [Verify SSL: True]
   bincrafters: https://api.bintray.com/conan/bincrafters/public-conan [Verify SSL: True]
 ```  
+# Building the Examples
+
+You can choose between building all the examples together and then use `boot` to run the service you want
+to check out or you can build the one example you are
+interested in and run that service. Below are instructions for both.
 
 ### Building and running a single example
 To build and run a single example, go into one of the examples and do;
@@ -60,7 +66,7 @@ To build and run a single example, go into one of the examples and do;
 ```
 
 
-# Building all the examples
+### Building all the examples
 Create a build folder and do
 
 ```bash
