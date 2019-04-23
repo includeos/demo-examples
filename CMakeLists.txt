@@ -8,8 +8,7 @@ set(EXAMPLES
   256_color_vga
   acorn
   demo_service
-#missing certs bundle..
-#  http_client
+  http_client
   IRCd
   LiveUpdate
   microLB

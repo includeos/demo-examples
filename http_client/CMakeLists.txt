@@ -1,48 +1,19 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.8.0)
 
-#Avoid cmake from test compiling to host
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
-# IncludeOS install location
-if (NOT DEFINED INCLUDEOS_PREFIX)
-  if (NOT DEFINED ENV{INCLUDEOS_PREFIX})
-    set(INCLUDEOS_PREFIX /usr/local/includeos)
-  else()
-    set(INCLUDEOS_PREFIX $ENV{INCLUDEOS_PREFIX})
-  endif()
-endif()
+project (http_client C CXX)
 
-if (NOT EXISTS "${INCLUDEOS_PREFIX}/cmake/os.cmake")
-  MESSAGE(FATAL_ERROR "IncludeOS does not appear to be installed at ${INCLUDEOS_PREFIX}")
+include(${CMAKE_CURRENT_BINARY_DIR}/conanbuildinfo.cmake OPTIONAL RESULT_VARIABLE HAS_CONAN)
+if (NOT HAS_CONAN)
+  message(FATAL_ERROR "missing conanbuildinfo.cmake did you forget to run conan install ?")
 endif()
-list(APPEND CMAKE_MODULE_PATH ${INCLUDEOS_PREFIX}/cmake)
+conan_basic_setup()
 
-#service
-project (service)
 include(os)
 
-set(SOURCES
-  service.cpp
-)
-
-os_add_executable(http_demo "IncludeOS Demo Service" ${SOURCES})
-
-# DRIVERS / PLUGINS:
-
-if ("$ENV{PLATFORM}" STREQUAL "x86_solo5")
-  os_add_drivers(http_demo solo5net)
-else()
-  os_add_drivers(http_demo
-    virtionet     # Virtio networking
-    vmxnet3
-    boot_logger   # Display boot information
-    # Use "boot --drivers ." to see other drivers
-    # virtioblk # Virtio block device
-    # ... Others from src/drivers
-  )
-endif()
-
-# os_add_plugins( ... )
-
-os_install_certificates(http_demo ${CMAKE_CURRENT_BINARY_DIR}/disk/certs)
-os_diskbuilder(http_demo ${CMAKE_CURRENT_BINARY_DIR}/disk)
+os_add_executable(http_client "http_client" service.cpp)
+os_add_drivers(http_client virtionet vmxnet3 e1000 boot_logger timestamps)
+os_add_plugins(http_client autoconf)
+os_add_stdout(http_client default_stdout)
+os_add_ssl_certificates(http_client)
