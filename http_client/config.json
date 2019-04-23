@@ -1,0 +1,8 @@
+{
+    "net" : [
+      {
+        "iface": 0,
+        "config":  "dhcp"
+      }
+    ]
+}

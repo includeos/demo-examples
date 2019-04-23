@@ -66,7 +66,7 @@ static void begin_http(net::Inet& inet)
   const auto url_sec{"https://www.google.com"s};
   INFO("HTTPS", "(Secure) GET %s", url_sec.c_str());
 
-  client.get("https://www.google.com", {}, [url = url_sec](Error err, Response_ptr res, Connection&)
+  client.get(url_sec, {}, [url = url_sec](Error err, Response_ptr res, Connection&)
   {
     if(not err) {
       printf("\n%s - Got Response!\n%s\n", url.c_str(), res->to_string().c_str());
@@ -79,7 +79,7 @@ static void begin_http(net::Inet& inet)
 
   Client::Options options;
   options.follow_redirect = 0;
-  const auto url_mis{"https://www.facebok.com"s};
+  const auto url_mis{"https://www.facebook.com"s};
   client.get(url_mis, {}, [url = url_mis](Error err, Response_ptr res, Connection&)
   {
     if(not err) {
@@ -114,4 +114,5 @@ void Service::start()
     [] (auto& inet) {
       begin_http(inet);
     });
+
 }
